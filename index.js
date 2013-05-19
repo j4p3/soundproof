@@ -2,7 +2,8 @@ var server = require("./server");
 var router = require("./router");
 var requestHandlers = require("./requestHandlers");
 
-var handle = {}
+var handle = {};
 handle["/"] = requestHandlers.home;
+handle['/favicon.ico'] = requestHandlers.favicon;
 
 server.start(router.route, handle);

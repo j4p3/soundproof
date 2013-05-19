@@ -17,4 +17,11 @@ function home(response, request) {
   render(response, 'views/index');
 }
 
+function favicon(response, request) {
+  //  prevent 404 on obnoxious double request for favicon
+  response.writeHead(200, {'Content-Type': 'image/x-icon'});
+  response.end();
+}
+
 exports.home = home;
+exports.favicon = favicon;
