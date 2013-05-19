@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from geopy import geocoders
 import urllib, urllib2
 import json
 import pprint
@@ -13,6 +14,7 @@ class ConstructionNoiseData(object):
     'lang' : 'eng'
   }
   data_rows = []
+  geocoder = geocoders.GoogleV3()
 
   def __init__(self):
     pass
@@ -45,6 +47,9 @@ class ConstructionNoiseData(object):
 
     # Costruct the data list
     row = {}
+    place = ''
+    lat = 0
+    lng = 0
     i = 0
 
     for data in table_data:
@@ -60,6 +65,14 @@ class ConstructionNoiseData(object):
       elif key == 3:
         row['address'] = data.contents[0].strip()
         row['pemittee_name'] = data.strong.string.strip()
+        # Get the lat and lng from geocoder
+        try:
+          place, (lat, lng) = self.geocoder.geocode(row['address'])
+          row['lat'] = lat
+          row['lng'] = lng
+        except:
+          row['lat'] = -1
+          row['lng'] = -1
       elif key == 4:
         row['district'] = data.contents[0].strip()
         # End of row

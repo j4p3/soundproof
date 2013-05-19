@@ -1,19 +1,26 @@
 <!doctype html>
 <html>
 <head>
-    <title>NEEDS MORE COWBELL</title>
-        <style>
-      html, body, #map-canvas {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-      }
-    </style>
+  <title>NEEDS MORE COWBELL</title>
+  <style>
+    html, body, #map-canvas {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #loading {
+      margin: 0px auto;
+      background-image: url(../images/loading.gif);
+      width: 508px;
+      height: 381px;
+    }
+  </style>
 </head>
 <body>
-    <div id="map-canvas"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60QcOlk-jhCGKM_RsQoBRWOqVNnCjXI4&v=3.exp&sensor=false&libraries=visualization"></script>
-    <script type="text/javascript" src="map.js">
-    </script>
+  <div id="loading"></div>
+  <div id="map-canvas"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA60QcOlk-jhCGKM_RsQoBRWOqVNnCjXI4&v=3.exp&sensor=false&libraries=visualization"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script type="text/javascript" src="../js/map.js"></script>
 </body>
 </html>
