@@ -23,5 +23,15 @@ function favicon(response, request) {
   response.end();
 }
 
+function map(response, request) {
+  response.writeHead(200, {'Content-Type': 'text/javascript'});
+  fs.readFile('js/map.js', function (err, data) {
+    if (err) { throw err; }
+    response.write(data);
+    response.end();
+  });
+}
+
 exports.home = home;
 exports.favicon = favicon;
+exports.map = map;
